@@ -10,14 +10,21 @@ public class FollowTarget : MonoBehaviour {
 	public float heightOverTarget = 5.0f;
 	public float heightSmoothingSpeed = 2.0f;
 	public float rotationSmoothingSpeed = 2.0f;
-	private int i = 0;
 
 	// Use LateUpdate to assure that the camera is updated after the target has been updated.
 	void  LateUpdate () {
 		if (!targetToFollow) {
 			return;
 		}
-		i++;
+		setupCameraPositionBehindTarget();
+	}
+
+	public void Synchronize(Transform syncPoint) {
+		print("MOSS Synchronize Function");
+		targetToFollow.position = syncPoint.position;
+	}
+
+	private void setupCameraPositionBehindTarget() {
 		Vector3 targetEulerAngles = targetRot.eulerAngles;
 
 		// Calculate the current rotation angle around the Y axis we want to apply to the camera.
@@ -43,9 +50,5 @@ public class FollowTarget : MonoBehaviour {
 		// Keep the camera looking to the target to apply rotation around X axis
 		transform.LookAt (targetToFollow);
 	}
-
-	public void Synchronize(Transform syncPoint) {
-		print("MOSS Synchronize Function");
-		targetToFollow.position = syncPoint.position;
-	}
+		
 }
