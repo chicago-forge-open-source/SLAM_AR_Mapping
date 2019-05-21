@@ -5,18 +5,12 @@ using System.Collections;
 public class FollowTarget : MonoBehaviour {
 	
 	public Transform targetToFollow;
-	public Quaternion targetRot;     
-	public Button syncButton;
-	public Transform syncPoint;                 // The rotation of the device camera from Frame.Pose.rotation    
+	public Quaternion targetRot;               // The rotation of the device camera from Frame.Pose.rotation    
 	public float distanceToTargetXZ = 10.0f;    // The distance in the XZ plane to the target
 	public float heightOverTarget = 5.0f;
 	public float heightSmoothingSpeed = 2.0f;
 	public float rotationSmoothingSpeed = 2.0f;
 	private int i = 0;
-
-	void Start() {
-		syncButton.onClick.AddListener(() => buttonCallBack(syncButton));
-	}
 
 	// Use LateUpdate to assure that the camera is updated after the target has been updated.
 	void  LateUpdate () {
@@ -50,15 +44,8 @@ public class FollowTarget : MonoBehaviour {
 		transform.LookAt (targetToFollow);
 	}
 
-	private void buttonCallBack(Button buttonPressed)
-	{
-		if (buttonPressed == syncButton)
-		{
-			Synchronize(syncPoint);
-		}
-	}
-
-	private void Synchronize(Transform syncPoint) {
+	public void Synchronize(Transform syncPoint) {
+		print("MOSS Synchronize Function");
 		targetToFollow.position = syncPoint.position;
 	}
 }
