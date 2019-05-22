@@ -22,7 +22,7 @@
 				const int LOST_TRACKING_SLEEP_TIMEOUT = 15;
 				Screen.sleepTimeout = LOST_TRACKING_SLEEP_TIMEOUT;
 				return;
-			} else {
+			} else { 
 				// Clear camPoseText if no error
 				camPoseText.text = "";
 			}

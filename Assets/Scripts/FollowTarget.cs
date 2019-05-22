@@ -20,7 +20,6 @@ public class FollowTarget : MonoBehaviour {
 	}
 
 	public void Synchronize(Transform syncPoint) {
-		print("MOSS Synchronize Function");
 		targetToFollow.position = syncPoint.position;
 	}
 
